@@ -11,12 +11,12 @@
 			var canvas = document.querySelector('canvas');
 			var context = canvas.getContext('2d');
 
-		  var width = canvas.width;
-		  var height = canvas.height;
-		  var centerX = width / 2;
-		  var centerY = height / 2;
+			var width = canvas.width;
+			var height = canvas.height;
+			var centerX = width / 2;
+			var centerY = height / 2;
 
-			setInterval(function() {
+			var clock = function() {
 				var now = new Date;
 				var hours = now.getHours() % 12;
 				var minutes = now.getMinutes();
@@ -37,21 +37,21 @@
 				context.stroke();
 
 				for (var i = 0; i < 12; i++) {
-          angle = (i - 3) * (Math.PI * 2) / 12;
-          context.lineWidth = width / 50;
-          context.beginPath();
+					angle = (i - 3) * (Math.PI * 2) / 12;
+					context.lineWidth = width / 50;
+					context.beginPath();
 
-          var x1 = centerX + Math.cos(angle) * (60);
-          var y1 = centerY + Math.sin(angle) * (60);
-          var x2 = centerX + Math.cos(angle) * (60 - (60 / 7));
-          var y2 = centerY + Math.sin(angle) * (60 - (60 / 7));
+					var x1 = centerX + Math.cos(angle) * (60);
+					var y1 = centerY + Math.sin(angle) * (60);
+					var x2 = centerX + Math.cos(angle) * (60 - (60 / 7));
+					var y2 = centerY + Math.sin(angle) * (60 - (60 / 7));
 
-          context.moveTo(x1, y1);
-          context.lineTo(x2, y2);
+					context.moveTo(x1, y1);
+					context.lineTo(x2, y2);
 
-          context.strokeStyle = '#000000';
-          context.stroke();
-        }
+					context.strokeStyle = '#000000';
+					context.stroke();
+				}
 
 				context.beginPath();
 				context.strokeStyle = '#000000';
@@ -68,7 +68,11 @@
 				context.stroke();
 
 				canvasToFavicon(canvas);
-			}, 100);
+			}
+
+			clock
+
+			setInterval(clock, 60000);
 		</script>
 	</body>
 </html>
