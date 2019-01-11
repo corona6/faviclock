@@ -60,7 +60,6 @@
 				context.lineTo(Math.cos(hoursAngle) * width / 3.5 + centerX, Math.sin(hoursAngle) * height / 3.5 + centerY);
 				context.stroke();
 
-
 				context.beginPath();
 				context.lineWidth = width / 32;
 				context.moveTo(centerX, centerY);
@@ -70,7 +69,7 @@
 				canvasToFavicon(canvas);
 			}
 
-			clock
+			clock();
 
 			setInterval(clock, 60000);
 		</script>
